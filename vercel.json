@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "http://38.60.216.45:2090/$1"
+      "destination": "http://server.net-home.space/$1"
     }
   ]
 }
