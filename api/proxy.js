@@ -2,13 +2,17 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = (req, res) => {
   const proxy = createProxyMiddleware({
-    target: 'https://149.104.79.165', // استفاده مستقیم از IP
+    target: 'https://server.net-home.space',
     changeOrigin: true,
     ws: true,
+    secure: false,
     pathRewrite: { '^/net': '' },
-    secure: false, // اضافه شد: چون IP هست نه دامنه
     onProxyReq: (proxyReq) => {
       proxyReq.setHeader('Host', 'server.net-home.space');
+    },
+    onError: (err, req, res) => {
+      res.writeHead(500, { 'Content-Type': 'text/plain' });
+      res.end('Proxy Error: ' + err.message);
     }
   });
   return proxy(req, res);
