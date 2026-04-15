@@ -1,15 +1,17 @@
 {
   "version": 2,
-  "builds": [
+  "rewrites": [
     {
-      "src": "api/proxy.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
+      "source": "/net/(.*)",
+      "destination": "/api/proxy"
+    },
     {
-      "src": "/net/(.*)",
-      "dest": "/api/proxy"
+      "source": "/net",
+      "destination": "/api/proxy"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/api/proxy"
     }
   ]
 }
