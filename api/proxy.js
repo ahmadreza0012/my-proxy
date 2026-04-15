@@ -5,7 +5,7 @@ module.exports = (req, res) => {
     target: 'https://server.net-home.space',
     changeOrigin: true,
     ws: true,
-    pathRewrite: { '^/api/proxy': '' },
+    pathRewrite: { '^/net': '' },
     onProxyReq: (proxyReq) => {
       proxyReq.setHeader('Host', 'server.net-home.space');
     }
